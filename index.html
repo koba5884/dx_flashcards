@@ -117,9 +117,11 @@
         }
 
         .card-category {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            position: static;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 8px 16px;
@@ -354,10 +356,6 @@
             }
 
             .card-category {
-                position: static;
-                display: block;
-                width: 100%;
-                text-align: center;
                 margin-bottom: 15px;
                 padding: 6px 12px;
                 font-size: 0.75em;
@@ -440,7 +438,7 @@
             <button onclick="nextCard()">次へ →</button>
         </div>
 
-        <div class="version">ver1.18</div>
+        <div class="version">ver1.19</div>
     </div>
 
     <script>
