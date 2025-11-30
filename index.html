@@ -140,14 +140,10 @@
         .card-content {
             text-align: center;
             width: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            touch-action: pan-y;
-            flex: 0 1 auto;
-            max-height: calc(100% - 60px);
-            padding-top: 10px;
-            position: relative;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .card-front .card-content {
@@ -174,7 +170,12 @@
         .choices {
             width: 100%;
             text-align: left;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
             touch-action: pan-y;
+            flex: 1 1 auto;
+            min-height: 0;
         }
 
         .choice-item {
@@ -421,7 +422,7 @@
             <button onclick="nextCard()">次へ →</button>
         </div>
 
-        <div class="version">ver1.13</div>
+        <div class="version">ver1.14</div>
     </div>
 
     <script>
