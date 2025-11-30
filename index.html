@@ -439,7 +439,7 @@
             <button onclick="nextCard()">次へ →</button>
         </div>
 
-        <div class="version">ver1.20</div>
+        <div class="version">ver1.21</div>
     </div>
 
     <script>
@@ -478,6 +478,18 @@
         let currentIndex = 0;
         let filteredCards = [...flashcards];
         let currentFilter = 'all';
+        let shuffledChoices = [];
+        let correctAnswerText = '';
+
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
 
         function displayCard() {
             const card = filteredCards[currentIndex];
@@ -485,18 +497,31 @@
             // Display question
             document.getElementById('question').textContent = card.question;
 
-            // Display choices
+            // Shuffle choices and track correct answer
+            const originalCorrectAnswer = card.choices[card.correctAnswer];
+            correctAnswerText = originalCorrectAnswer;
+
+            // Create array of choice objects with original index
+            const choicesWithIndex = card.choices.map((choice, index) => ({
+                text: choice,
+                isCorrect: index === card.correctAnswer
+            }));
+
+            // Shuffle the choices
+            shuffledChoices = shuffleArray(choicesWithIndex);
+
+            // Display shuffled choices
             const choicesDiv = document.getElementById('choices');
             choicesDiv.innerHTML = '';
-            card.choices.forEach((choice, index) => {
+            shuffledChoices.forEach((choice, index) => {
                 const choiceItem = document.createElement('div');
                 choiceItem.className = 'choice-item';
-                choiceItem.textContent = `${index + 1}. ${choice}`;
+                choiceItem.textContent = `${index + 1}. ${choice.text}`;
                 choicesDiv.appendChild(choiceItem);
             });
 
             // Display correct answer
-            document.getElementById('correct-answer').textContent = `正解: ${card.choices[card.correctAnswer]}`;
+            document.getElementById('correct-answer').textContent = `正解: ${correctAnswerText}`;
 
             // Display explanation
             document.getElementById('explanation').textContent = card.explanation;
