@@ -143,9 +143,11 @@
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
             flex: 0 1 auto;
             max-height: calc(100% - 60px);
             padding-top: 10px;
+            position: relative;
         }
 
         .card-front .card-content {
@@ -172,6 +174,7 @@
         .choices {
             width: 100%;
             text-align: left;
+            touch-action: pan-y;
         }
 
         .choice-item {
@@ -418,7 +421,7 @@
             <button onclick="nextCard()">次へ →</button>
         </div>
 
-        <div class="version">ver1.12</div>
+        <div class="version">ver1.13</div>
     </div>
 
     <script>
