@@ -105,7 +105,6 @@
             justify-content: flex-start;
             align-items: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            overflow: hidden;
         }
 
         .card-front {
@@ -143,11 +142,10 @@
             width: 100%;
             overflow-y: auto;
             overflow-x: hidden;
-            max-height: 280px;
             -webkit-overflow-scrolling: touch;
-            flex: 1 1 auto;
-            min-height: 0;
-            margin: auto 0;
+            flex: 0 1 auto;
+            max-height: calc(100% - 60px);
+            padding-top: 10px;
         }
 
         .card-front .card-content {
@@ -334,15 +332,11 @@
             }
 
             .card {
-                height: 400px;
+                height: 450px;
             }
 
             .card-face {
                 padding: 30px;
-            }
-
-            .card-content {
-                max-height: 250px;
             }
 
             .card-front .card-content {
